@@ -1,0 +1,85 @@
+/*home-gallery*/
+add_shortcode("home-gallery","home_gallery");
+function home_gallery(){
+	global $fdata;
+	// it is the gallery home page id
+	$logo_page_id=6295;
+//	if( have_rows('all_logos',$logo_page_id) ):
+	$html .='<section class="home-gallery-section">';
+		$html .='<div class="container-fluid">';
+			$html .='<div class="row">';    
+				$html .='<div class="col-sm-12">';
+					$images = get_field('home_gallery',$logo_page_id);
+					if( $images ):
+						$html .='<ul class="all-home-gallery home-gallery-slider">';
+							foreach( $images as $image ):		
+								$html .='<li class="single-home-gallery slick-slide">';
+									$html .='<a href="'.$image['url'].'" data-fancybox="gallery"><img class="gallery-image" src="'.$image['sizes']['home-gallery'].'" alt="'.$image['alt'].'"></a>';
+								$html .='</li>';	
+							endforeach;
+						$html .='</ul>';
+						endif;				$html .='</div>';
+			$html .='</div>';
+		$html .='</div>';
+	$html .='</section>';	
+	//	endif;
+	return $html;
+}
+
+
+
+---- JQUERY ----
+
+jQuery('.home-gallery-slider').slick({
+			slidesPerRow: 5,
+			rows: 2,
+			dots: false,
+			arrows: true,
+			autoplay: false,
+			nextArrow: '<span class="custom-left-arrow arrow" style="display: block;"></span>',
+			prevArrow: '<span class="custom-right-arrow arrow" style="display: block;"></span>',
+			autoplaySpeed: 5000,
+			responsive: [
+			{
+			  breakpoint: 767,
+			  settings: {
+				slidesPerRow: 3,
+				rows: 2,
+			  }
+			},
+			{
+			  breakpoint: 560,
+			  settings: {
+				slidesPerRow: 1,
+				rows: 2,
+			  }
+			}		  ]
+		});
+	/* home-gallery */
+	jQuery('.home-gallery-slider').slick({
+			slidesPerRow: 5,
+			rows: 2,
+			dots: false,
+			arrows: true,
+			autoplay: false,
+			nextArrow: '<span class="custom-left-arrow arrow" style="display: block;"></span>',
+			prevArrow: '<span class="custom-right-arrow arrow" style="display: block;"></span>',
+			autoplaySpeed: 5000,
+			responsive: [
+			{
+			  breakpoint: 767,
+			  settings: {
+				slidesPerRow: 3,
+				rows: 2,
+			  }
+			},
+			{
+			  breakpoint: 560,
+			  settings: {
+				slidesPerRow: 1,
+				rows: 2,
+			  }
+			}		  ]
+		});
+	/* home-gallery */
+	
